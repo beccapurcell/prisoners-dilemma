@@ -19,6 +19,6 @@ def play(playerName:str):
     result = prisoner_choice(playerName, choice)
     return result
 
-#################################################################
+ #################################################################
 
 print(play(create_player()))
