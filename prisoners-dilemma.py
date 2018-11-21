@@ -1,4 +1,4 @@
-
+import random
 # choices = ['betray', 'remain silent']
 # consequences = [0, -1, -2, -3]
 # prisoners = ['Prisoner1', 'Prisoner2']
@@ -14,11 +14,23 @@ def create_player():
     return player_name
 
 #################################################################
-def play(playerName:str):
-    choice = input("Will you 'remain silent' or 'betray'? >>> ")
-    result = prisoner_choice(playerName, choice)
-    return result
+def play_round(playerName:str = 'Steven'):
+    choice_input = input("Will you 'remain silent' or 'betray'? >>> ")
+    player_result = prisoner_choice(playerName, choice_input)
+    ai_result = prisoner_choice('ai', ai_choice())
+    return player_result, ai_result
 
  #################################################################
+def ai_choice():
+    option_list = [0, 1]
+    ai_choice = random.choice(option_list)
+    if ai_choice == 0:
+        choice = 'remain silent'
+    if ai_choice == 1:
+        choice = 'betray'
 
-print(play(create_player()))
+    return choice
+    
+#################################################################
+
+print(play_round())
